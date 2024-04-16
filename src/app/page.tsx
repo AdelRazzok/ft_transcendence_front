@@ -1,9 +1,14 @@
-import { jockeyOne } from '@/ui/font'
+import { pressStart } from '@/ui/font'
+import styles from '@/ui/home.module.css'
 
 export default function Page() {
 	return (
-		<main>
-			<h1 className={`${jockeyOne.className}`}>FT_TRANSCENDENCE</h1>
+		<main
+			className={`${pressStart.className} ${styles.home_container} container-fluid`}
+		>
+			<h1 className={`${pressStart.className} mt-4 text-center`}>
+				FT_TRANSCENDENCE
+			</h1>
 		</main>
 	)
 }
