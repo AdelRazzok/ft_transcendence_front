@@ -1,0 +1,51 @@
+.auth_button {
+	--background-color: #000;
+	--border-color: #fff;
+	--border-width: 0.15em;
+	--edge-size: 0.5em;
+
+	color: #fff;
+	cursor: pointer;
+	background: var(--background-color);
+	font-size: 32px;
+	padding: 0.5em 1.5em;
+	border: 0;
+	position: relative;
+	isolation: isolate;
+	display: inline-grid;
+	place-content: center;
+	clip-path: polygon(
+		0 0,
+		100% 0,
+		100% 100%,
+		var(--edge-size) 100%,
+		0 calc(100% - var(--edge-size))
+	);
+	width: 10em;
+}
+
+.auth_button::before,
+.auth_button::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+
+.auth_button::before {
+	background: var(--border-color);
+	z-index: -2;
+}
+
+.auth_button::after {
+	background: var(--background-color);
+	z-index: -1;
+	clip-path: polygon(
+		var(--border-width) var(--border-width),
+		calc(100% - var(--border-width)) var(--border-width),
+		calc(100% - var(--border-width)) calc(100% - var(--border-width)),
+		calc(var(--edge-size) + var(--border-width) * 0.5)
+			calc(100% - var(--border-width)),
+		var(--border-width)
+			calc(100% - var(--edge-size) - var(--border-width) * 0.5)
+	);
+}

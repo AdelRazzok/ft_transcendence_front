@@ -13,7 +13,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="fr" dir="ltr">
+		<html lang="en" dir="ltr">
 			<body className={`${jockeyOne.className}`}>{children}</body>
 		</html>
 	)
