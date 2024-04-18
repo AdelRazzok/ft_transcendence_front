@@ -1,9 +1,25 @@
 .home_container {
-	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.5);
 	color: #fff;
 	height: 100vh;
+	position: relative;
+}
+
+.gif_background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../../public/img/background.gif');
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -1;
 }
 
 .auth_container {
 	margin-top: 10em;
+}
+
+.form_container {
 }

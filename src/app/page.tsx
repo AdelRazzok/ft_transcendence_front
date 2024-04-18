@@ -1,13 +1,11 @@
 import Button from '@/components/Button/Button'
-import { pressStart } from '@/ui/font'
 import styles from '@/ui/home.module.css'
 import Link from 'next/link'
 
-export default function Page() {
+export default function Home() {
 	return (
-		<main
-			className={`${pressStart.className} ${styles.home_container} container-fluid`}
-		>
+		<>
+			<div className={`${styles.gif_background}`}></div>
 			<h1 className="pt-5 text-center">FT_TRANSCENDENCE</h1>
 
 			<div
@@ -21,6 +19,6 @@ export default function Page() {
 					<Button text="Sign Up" />
 				</Link>
 			</div>
-		</main>
+		</>
 	)
 }
