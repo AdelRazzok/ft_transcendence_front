@@ -49,3 +49,11 @@
 			calc(100% - var(--edge-size) - var(--border-width) * 0.5)
 	);
 }
+
+.auth_button:hover {
+	color: #000;
+}
+
+.auth_button:hover::after {
+	background: #fff;
+}

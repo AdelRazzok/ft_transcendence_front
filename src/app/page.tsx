@@ -1,6 +1,7 @@
 import Button from '@/components/Button/Button'
 import { pressStart } from '@/ui/font'
 import styles from '@/ui/home.module.css'
+import Link from 'next/link'
 
 export default function Page() {
 	return (
@@ -12,8 +13,13 @@ export default function Page() {
 			<div
 				className={`${styles.auth_container} d-flex gap-5 flex-column justify-content-center align-items-center`}
 			>
-				<Button text="Login" link="/" />
-				<Button text="Sign Up" link="/" />
+				<Link href="/login">
+					<Button text="Login" />
+				</Link>
+
+				<Link href="/signup">
+					<Button text="Sign Up" />
+				</Link>
 			</div>
 		</main>
 	)
