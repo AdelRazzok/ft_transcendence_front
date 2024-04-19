@@ -1,3 +1,3 @@
 export default function Solo() {
-	return <div>Solo</div>
+	return <canvas width={480} height={320} />
 }
