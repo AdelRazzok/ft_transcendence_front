@@ -1,0 +1,15 @@
+.menu_title {
+	font-size: 5em;
+	color: #b45555;
+}
+
+.menu_link {
+	font-size: 4em;
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu_link:hover,
+.menu_link:focus {
+	text-decoration: underline;
+}

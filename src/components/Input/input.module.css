@@ -1,4 +1,16 @@
 .auth_input {
+	--background-color: #000;
+	--border-color: #fff;
+	--border-width: 0.15em;
+	--edge-size: 0.5em;
+
 	all: unset;
-	/* Centrer le text */
+	text-align: center;
+	color: #fff;
+	cursor: text;
+	background: var(--background-color);
+	font-size: 24px;
+	padding: 0.5em 1.5em;
+	border: 0.2em solid var(--border-color);
+	width: 10em;
 }
