@@ -17,7 +17,7 @@ export default function RootLayout({
 		<html lang="en" dir="ltr">
 			<body className={`${jockeyOne.className}`}>
 				<main
-					className={`${pressStart.className} ${styles.home_container} container-fluid`}
+					className={`${pressStart.className} ${styles.home_container} container-fluid g-0`}
 				>
 					{children}
 				</main>

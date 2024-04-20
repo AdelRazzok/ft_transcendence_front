@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "konva": "^9.3.6",
     "next": "14.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-konva": "^18.2.10"
   },
   "devDependencies": {
     "@types/node": "^20",
