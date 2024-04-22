@@ -1,6 +1,6 @@
 import { PaddleContext } from '@/contexts/GameContext'
 import IPaddle from '@/interfaces/IPaddle'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Rect } from 'react-konva'
 
 export default function Paddle({
@@ -13,9 +13,7 @@ export default function Paddle({
 	isRightPaddle,
 	isAiOn,
 }: IPaddle) {
-	// Paddle context
 	const paddleContext = useContext(PaddleContext)
-	// Direction state
 	const [isMovingUp, setIsMovingUp] = useState<boolean>(false)
 	const [isMovingDown, setIsMovingDown] = useState<boolean>(false)
 
@@ -24,14 +22,14 @@ export default function Paddle({
 			if (!isGameRunning) return
 			const upKey = isRightPaddle ? 'ArrowUp' : 'w'
 			const downKey = isRightPaddle ? 'ArrowDown' : 's'
-	
+
 			if (e.key === upKey) {
 				setIsMovingUp(true)
 			} else if (e.key === downKey) {
 				setIsMovingDown(true)
 			}
-		}		
-	
+		}
+
 		const handleKeyUp = (e: KeyboardEvent) => {
 			if (isRightPaddle) {
 				if (e.key === 'ArrowUp' && isMovingUp) setIsMovingUp(false)
@@ -41,7 +39,7 @@ export default function Paddle({
 				else if (e.key === 's' && isMovingDown) setIsMovingDown(false)
 			}
 		}
-	
+
 		window.addEventListener('keydown', handleKeyDown, false)
 		window.addEventListener('keyup', handleKeyUp, false)
 
@@ -56,13 +54,13 @@ export default function Paddle({
 			if (isGameRunning) {
 				if (isMovingUp && y > 0) {
 					update(y - paddleContext.speed)
-				} else if (isMovingDown && y < (windowHeight - paddleContext.height)) {
+				} else if (isMovingDown && y < windowHeight - paddleContext.height) {
 					update(y + paddleContext.speed)
 				}
 			}
-			requestAnimationFrame(loop)
 		}
-		loop()
+		const interval = setInterval(loop, 1000 / 60)
+		return () => clearInterval(interval)
 	}, [
 		isMovingUp,
 		isMovingDown,
@@ -71,7 +69,7 @@ export default function Paddle({
 		update,
 		isGameRunning,
 		paddleContext.height,
-		paddleContext.speed
+		paddleContext.speed,
 	])
 
 	return (

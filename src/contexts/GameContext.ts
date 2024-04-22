@@ -10,6 +10,6 @@ export const PaddleContext = createContext({
 
 export const BallContext = createContext({
 	size: 10,
-	speed: 10,
+	speed: 5,
 	color: '#fff',
 })
