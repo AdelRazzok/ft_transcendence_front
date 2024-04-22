@@ -1,8 +1,8 @@
 export default interface IPaddle {
-	x: number
-	y: number
 	windowWidth: number
 	windowHeight: number
+	x: number
+	y: number
 	update: (y: number) => void
 	isRightPaddle: boolean
 	isGameRunning: boolean

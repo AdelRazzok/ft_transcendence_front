@@ -1,16 +1,15 @@
-import IProperties from '@/interfaces/IProperties'
 import { createContext } from 'react'
 
-export const PaddleContext = createContext<IProperties>({
+export const PaddleContext = createContext({
+	x: 10,
 	width: 10,
 	height: 75,
 	speed: 10,
 	color: '#fff',
 })
 
-export const BallContext = createContext<IProperties>({
-	width: 10,
-	height: 10,
+export const BallContext = createContext({
+	size: 10,
 	speed: 10,
 	color: '#fff',
 })

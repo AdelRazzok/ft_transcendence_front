@@ -13,7 +13,7 @@ export default function Local() {
 					1 PLAYER
 				</Link>
 				<Link href="/local/multi" className={`${menuStyles.menu_link} mt-5`}>
-					2 PLAYER
+					2 PLAYERS
 				</Link>
 			</div>
 		</>

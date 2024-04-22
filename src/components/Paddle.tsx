@@ -1,91 +1,86 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { PaddleContext } from '@/contexts/GameContext'
 import IPaddle from '@/interfaces/IPaddle'
 import { useContext, useEffect, useRef, useState } from 'react'
 import { Rect } from 'react-konva'
 
 export default function Paddle({
-	x,
-	y,
 	windowWidth,
 	windowHeight,
+	x,
+	y,
 	update,
-	isRightPaddle,
 	isGameRunning,
+	isRightPaddle,
 	isAiOn,
 }: IPaddle) {
-	const { width, height, speed, color } = useContext(PaddleContext)
-	const [isMovingUp, setIsMovingUp] = useState(false)
-	const [isMovingDown, setIsMovingDown] = useState(false)
-	const yRef = useRef(y)
-
-	const calculateXPos = (windowWidth: number, isRightPaddle: boolean) =>
-		isRightPaddle ? windowWidth - width - x : x
+	// Paddle context
+	const paddleContext = useContext(PaddleContext)
+	// Direction state
+	const [isMovingUp, setIsMovingUp] = useState<boolean>(false)
+	const [isMovingDown, setIsMovingDown] = useState<boolean>(false)
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (isRightPaddle) {
-				if (e.key === 'w') {
-					setIsMovingUp(true)
-				} else if (e.key === 's') {
-					setIsMovingDown(true)
-				}
-			} else {
-				if (e.key === 'ArrowUp') {
-					setIsMovingUp(true)
-				} else if (e.key === 'ArrowDown') {
-					setIsMovingDown(true)
-				}
+			if (!isGameRunning) return
+			const upKey = isRightPaddle ? 'ArrowUp' : 'w'
+			const downKey = isRightPaddle ? 'ArrowDown' : 's'
+	
+			if (e.key === upKey) {
+				setIsMovingUp(true)
+			} else if (e.key === downKey) {
+				setIsMovingDown(true)
 			}
-		}
+		}		
+	
 		const handleKeyUp = (e: KeyboardEvent) => {
 			if (isRightPaddle) {
-				if (e.key === 'w') {
-					setIsMovingUp(false)
-				} else if (e.key === 's') {
-					setIsMovingDown(false)
-				}
+				if (e.key === 'ArrowUp' && isMovingUp) setIsMovingUp(false)
+				else if (e.key === 'ArrowDown' && isMovingDown) setIsMovingDown(false)
 			} else {
-				if (e.key === 'ArrowUp') {
-					setIsMovingUp(false)
-				} else if (e.key === 'ArrowDown') {
-					setIsMovingDown(false)
-				}
+				if (e.key === 'w' && isMovingUp) setIsMovingUp(false)
+				else if (e.key === 's' && isMovingDown) setIsMovingDown(false)
 			}
 		}
-		window.addEventListener('keydown', handleKeyDown)
-		window.addEventListener('keyup', handleKeyUp)
+	
+		window.addEventListener('keydown', handleKeyDown, false)
+		window.addEventListener('keyup', handleKeyUp, false)
 
 		return () => {
 			window.removeEventListener('keydown', handleKeyDown)
 			window.removeEventListener('keyup', handleKeyUp)
 		}
-	}, [isAiOn, isRightPaddle, windowHeight])
+	}, [isMovingUp, isMovingDown, isGameRunning, isRightPaddle])
 
 	useEffect(() => {
-		if (isGameRunning) {
-			const updatePaddle = () => {
-				let newY = yRef.current
-				if (isMovingUp && newY < windowHeight - height) {
-					newY += speed
-				} else if (isMovingDown && newY > 0) {
-					newY -= speed
+		const loop = () => {
+			if (isGameRunning) {
+				if (isMovingUp && y > 0) {
+					update(y - paddleContext.speed)
+				} else if (isMovingDown && y < (windowHeight - paddleContext.height)) {
+					update(y + paddleContext.speed)
 				}
-				yRef.current = newY
-				update(newY)
-				requestAnimationFrame(updatePaddle)
 			}
-			updatePaddle()
+			requestAnimationFrame(loop)
 		}
-	}, [isGameRunning, isMovingUp, isMovingDown, update])
+		loop()
+	}, [
+		isMovingUp,
+		isMovingDown,
+		windowHeight,
+		y,
+		update,
+		isGameRunning,
+		paddleContext.height,
+		paddleContext.speed
+	])
 
 	return (
 		<Rect
-			x={calculateXPos(windowWidth, isRightPaddle)}
-			y={yRef.current}
-			width={width}
-			height={height}
-			fill={color}
+			x={x}
+			y={y}
+			width={paddleContext.width}
+			height={paddleContext.height}
+			fill={paddleContext.color}
 		/>
 	)
 }

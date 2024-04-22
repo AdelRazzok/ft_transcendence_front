@@ -27,11 +27,11 @@ export default function SignUp() {
 					className="d-flex my-5 gap-5 flex-column justify-content-center align-items-center"
 				>
 					<Input type="email" name="email" placeholder="Email"></Input>
-					<Input type="text" name="username" placeholder="Username *"></Input>
+					<Input type="text" name="username" placeholder="Username"></Input>
 					<Input
 						type="password"
 						name="password"
-						placeholder="Password *"
+						placeholder="Password"
 					></Input>
 					<Button text="Submit"></Button>
 				</form>
