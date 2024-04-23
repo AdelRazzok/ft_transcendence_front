@@ -1,18 +1,20 @@
 import { PaddleContext } from '@/contexts/GameContext'
-import IPaddle from '@/interfaces/IPaddle'
 import { useContext, useEffect, useState } from 'react'
 import { Rect } from 'react-konva'
 
-export default function Paddle({
+export default function QuatroPaddle({
 	windowWidth,
 	windowHeight,
 	x,
 	y,
 	update,
 	isGameRunning,
-	isRightPaddle,
+	isTopLeftPaddle,
+	isTopRightPaddle,
+	isBottomLeftPaddle,
+	isBottomRightPaddle,
 	isAiOn,
-}: IPaddle) {
+}: any) {
 	const paddleContext = useContext(PaddleContext)
 	const [isMovingUp, setIsMovingUp] = useState<boolean>(false)
 	const [isMovingDown, setIsMovingDown] = useState<boolean>(false)
@@ -20,24 +22,47 @@ export default function Paddle({
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
 			if (!isGameRunning || isAiOn) return
-			const upKey = isRightPaddle ? 'ArrowUp' : 'w'
-			const downKey = isRightPaddle ? 'ArrowDown' : 's'
-
-			if (e.key === upKey) {
-				setIsMovingUp(true)
-			} else if (e.key === downKey) {
-				setIsMovingDown(true)
+			if (isTopLeftPaddle) {
+				if (e.key === 'w') {
+					setIsMovingUp(true)
+				} else if (e.key === 's') {
+					setIsMovingDown(true)
+				}
+			} else if (isBottomLeftPaddle) {
+				if (e.key === 'i') {
+					setIsMovingUp(true)
+				} else if (e.key === 'k') {
+					setIsMovingDown(true)
+				}
+			} else if (isTopRightPaddle) {
+				if (e.key === 'ArrowUp') {
+					setIsMovingUp(true)
+				} else if (e.key === 'ArrowDown') {
+					setIsMovingDown(true)
+				}
+			} else if (isBottomLeftPaddle) {
+				if (e.key === '8') {
+					setIsMovingUp(true)
+				} else if (e.key === '5') {
+					setIsMovingDown(true)
+				}
 			}
 		}
 
 		const handleKeyUp = (e: KeyboardEvent) => {
 			if (!isGameRunning || isAiOn) return
-			if (isRightPaddle) {
+			if (isTopRightPaddle) {
 				if (e.key === 'ArrowUp' && isMovingUp) setIsMovingUp(false)
 				else if (e.key === 'ArrowDown' && isMovingDown) setIsMovingDown(false)
-			} else {
+			} else if (isTopLeftPaddle) {
 				if (e.key === 'w' && isMovingUp) setIsMovingUp(false)
 				else if (e.key === 's' && isMovingDown) setIsMovingDown(false)
+			} else if (isBottomRightPaddle) {
+				if (e.key === 'i' && isMovingUp) setIsMovingUp(false)
+				else if (e.key === 'k' && isMovingDown) setIsMovingDown(false)
+			} else if (isBottomLeftPaddle) {
+				if (e.key === '8' && isMovingUp) setIsMovingUp(false)
+				else if (e.key === '5' && isMovingDown) setIsMovingDown(false)
 			}
 		}
 
@@ -48,7 +73,16 @@ export default function Paddle({
 			window.removeEventListener('keydown', handleKeyDown)
 			window.removeEventListener('keyup', handleKeyUp)
 		}
-	}, [isMovingUp, isMovingDown, isGameRunning, isRightPaddle, isAiOn])
+	}, [
+		isMovingUp,
+		isMovingDown,
+		isGameRunning,
+		isAiOn,
+		isTopLeftPaddle,
+		isTopRightPaddle,
+		isBottomLeftPaddle,
+		isBottomRightPaddle,
+	])
 
 	useEffect(() => {
 		const loop = () => {

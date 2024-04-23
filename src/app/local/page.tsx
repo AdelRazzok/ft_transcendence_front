@@ -6,7 +6,8 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
 export default function Local() {
-	const { t } = useTranslation()
+	const { t, i18n } = useTranslation()
+
 	return (
 		<>
 			<div className={`${homeStyles.gif_background}`}></div>
@@ -14,13 +15,15 @@ export default function Local() {
 
 			<div className="mt-5 gap-5 container d-flex flex-column justify-content-center align-items-center">
 				<Link href="/local/solo" className={`${menuStyles.menu_link} mt-5`}>
-					{t('1_PLAYER')}
+					{t('1 PLAYER')}
 				</Link>
+
 				<Link href="/local/multi" className={`${menuStyles.menu_link} mt-5`}>
-					{t('2_PLAYERS')}
+					{t('2 PLAYERS')}
 				</Link>
+
 				<Link href="/local/quatro" className={`${menuStyles.menu_link} mt-5`}>
-					{t('4_PLAYERS')}
+					{t('4 PLAYERS')}
 				</Link>
 			</div>
 		</>

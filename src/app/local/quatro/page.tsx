@@ -2,88 +2,97 @@
 
 import Ball from '@/components/Ball'
 import Court from '@/components/Court'
-import Paddle from '@/components/Paddle'
+import QuatroPaddle from '@/components/QuatroPaddle'
 import { PaddleContext } from '@/contexts/GameContext'
 import styles from '@/ui/game.module.css'
 import { useContext, useEffect, useState } from 'react'
 import { Line } from 'react-konva'
 
-export default function Multi() {
+export default function Quatro() {
 	const paddleContext = useContext(PaddleContext)
 	const [windowWidth, setWindowWidth] = useState<number>(0)
 	const [windowHeight, setWindowHeight] = useState<number>(0)
 	const [isGameStarted, setIsGameStarted] = useState<boolean>(false)
 	const [isGamePaused, setIsGamePaused] = useState<boolean>(false)
 	const [isGameEnded, setIsGameEnded] = useState<boolean>(false)
-	const [leftPaddleY, setLeftPaddleY] = useState<number>(0)
-    const [leftPaddleY2, setLeftPaddleY2] = useState<number>(0)
-	const [rightPaddleY, setRightPaddleY] = useState<number>(0)
-    const [rightPaddleY2, setRightPaddleY2] = useState<number>(0)
-	const [leftPlayerScore, setLeftPlayerScore] = useState<number>(0)
-	const [rightPlayerScore, setRightPlayerScore] = useState<number>(0)
+	const [topLeftPaddleY, setTopLeftPaddleY] = useState<number>(0)
+	const [bottomLeftPaddleY, setBottomLeftPaddleY] = useState<number>(0)
+	const [topRightPaddleY, setTopRightPaddleY] = useState<number>(0)
+	const [bottomRightPaddleY, setBottomRightPaddleY] = useState<number>(0)
+	const [leftTeamScore, setLeftTeamScore] = useState<number>(0)
+	const [rightTeamScore, setRightTeamScore] = useState<number>(0)
 
 	// Game functions
 	const startGame = () => {
 		setIsGameEnded(false)
 		setIsGameStarted(true)
-		setLeftPaddleY(windowHeight - paddleContext.height)
-        setLeftPaddleY2(windowHeight / 4 - paddleContext.height / 4)
-		setRightPaddleY(windowHeight - paddleContext.height)
-        setRightPaddleY2(windowHeight / 4 - paddleContext.height / 4)
 
-		setLeftPlayerScore(0)
-		setRightPlayerScore(0)
+		setTopLeftPaddleY(windowHeight - paddleContext.height)
+		setBottomLeftPaddleY(windowHeight / 4 - paddleContext.height / 4)
+
+		setTopRightPaddleY(windowHeight - paddleContext.height)
+		setBottomRightPaddleY(windowHeight / 4 - paddleContext.height / 4)
+
+		setLeftTeamScore(0)
+		setRightTeamScore(0)
 	}
 
 	const togglePause = () => {
 		setIsGamePaused((prev) => !prev)
 	}
 
-	const updateLeftPaddle = (newY: number) => {
-		setLeftPaddleY((prev) => newY)
-        setLeftPaddleY2((prev) => newY)
+	const updateTopLeftPaddle = (newY: number) => {
+		setTopLeftPaddleY((prev) => newY)
 	}
 
-	const updateRightPaddle = (newY: number) => {
-		setRightPaddleY((prev) => newY)
-        setRightPaddleY2((prev) => newY)
+	const updateBottomLeftPaddle = (newY: number) => {
+		setBottomLeftPaddleY((prev) => newY)
 	}
 
-	const increaseScore = (playerId: number) => {
-		if (playerId === 1) {
-			setLeftPlayerScore((prev) => prev + 1)
-		} else if (playerId === 2) {
-			setRightPlayerScore((prev) => prev + 1)
+	const updateTopRightPaddle = (newY: number) => {
+		setTopRightPaddleY((prev) => newY)
+	}
+
+	const updateBottomRightPaddle = (newY: number) => {
+		setBottomRightPaddleY((prev) => newY)
+	}
+
+	const increaseScore = (teamId: number) => {
+		if (teamId === 1) {
+			setLeftTeamScore((prev) => prev + 1)
+		} else if (teamId === 2) {
+			setRightTeamScore((prev) => prev + 1)
 		}
 	}
 
 	const endGame = (winnerId: number) => {
 		setIsGameEnded(true)
 		setIsGameStarted(false)
-		setLeftPaddleY(windowHeight- paddleContext.height)
-        setLeftPaddleY2(windowHeight / 4 - paddleContext.height / 4)
 
-		setRightPaddleY(windowHeight - paddleContext.height)
-        setRightPaddleY2(windowHeight / 4 - paddleContext.height / 4)
+		setTopLeftPaddleY(windowHeight - paddleContext.height)
+		setBottomLeftPaddleY(windowHeight / 4 - paddleContext.height / 4)
 
-		setLeftPlayerScore(0)
-		setRightPlayerScore(0)
+		setTopRightPaddleY(windowHeight - paddleContext.height)
+		setBottomRightPaddleY(windowHeight / 4 - paddleContext.height / 4)
+
+		setLeftTeamScore(0)
+		setRightTeamScore(0)
 		if (winnerId === 1) {
-			alert('Player 1 wins!')
+			alert('Team 1 wins!')
 		} else if (winnerId === 2) {
-			alert('Player 2 wins!')
+			alert('Team 2 wins!')
 		}
 	}
 
-	const handleGameEnd = (playerId: number) => {
+	const handleGameEnd = (teamId: number) => {
 		const scoreCible = 5
 
-		if (playerId === 1) {
-			if (leftPlayerScore + 1 === scoreCible) {
+		if (teamId === 1) {
+			if (leftTeamScore + 1 === scoreCible) {
 				endGame(1)
 			}
-		} else if (playerId === 2) {
-			if (rightPlayerScore + 1 === scoreCible) {
+		} else if (teamId === 2) {
+			if (rightTeamScore + 1 === scoreCible) {
 				endGame(2)
 			}
 		}
@@ -133,8 +142,8 @@ export default function Multi() {
 	return (
 		<>
 			<div className={`${styles.score_container}`}>
-				<p>{leftPlayerScore}</p>
-				<p>{rightPlayerScore}</p>
+				<p>{leftTeamScore}</p>
+				<p>{rightTeamScore}</p>
 			</div>
 
 			<Court width={windowWidth} height={windowHeight}>
@@ -145,53 +154,57 @@ export default function Multi() {
 					dash={[10, 5]}
 				/>
 
-				<Paddle
+				<QuatroPaddle
 					windowHeight={windowHeight}
 					windowWidth={windowWidth}
 					x={paddleContext.x}
-					y={leftPaddleY}
-					update={updateLeftPaddle}
+					y={topLeftPaddleY}
+					update={updateTopLeftPaddle}
 					isGameRunning={!isGamePaused}
-					isRightPaddle={false}
+					isTopLeftPaddle={true}
 					isAiOn={false}
+					isQuatro={true}
 				/>
-                <Paddle
+				<QuatroPaddle
 					windowHeight={windowHeight}
 					windowWidth={windowWidth}
 					x={paddleContext.x}
-					y={leftPaddleY2}
-					update={updateLeftPaddle}
+					y={bottomLeftPaddleY}
+					update={updateBottomLeftPaddle}
 					isGameRunning={!isGamePaused}
-					isRightPaddle={false}
+					isBottomLeftPaddle={true}
 					isAiOn={false}
+					isQuatro={true}
 				/>
 
-				<Paddle
+				<QuatroPaddle
 					windowHeight={windowHeight}
 					windowWidth={windowWidth}
 					x={windowWidth - paddleContext.width - paddleContext.x}
-					y={rightPaddleY2}
-					update={updateRightPaddle}
+					y={topRightPaddleY}
+					update={updateTopRightPaddle}
 					isGameRunning={!isGamePaused}
-					isRightPaddle={true}
+					isTopRightPaddle={true}
 					isAiOn={false}
+					isQuatro={true}
 				/>
-                <Paddle
+				<QuatroPaddle
 					windowHeight={windowHeight}
 					windowWidth={windowWidth}
 					x={windowWidth - paddleContext.width - paddleContext.x}
-					y={rightPaddleY}
-					update={updateRightPaddle}
+					y={bottomRightPaddleY}
+					update={updateBottomRightPaddle}
 					isGameRunning={!isGamePaused}
-					isRightPaddle={true}
+					isBottomRightPaddle={true}
 					isAiOn={false}
+					isQuatro={true}
 				/>
 
 				<Ball
 					windowHeight={windowHeight}
 					windowWidth={windowWidth}
-					leftPaddleY={leftPaddleY}
-					rightPaddleY={rightPaddleY}
+					leftPaddleY={topLeftPaddleY}
+					rightPaddleY={topRightPaddleY}
 					isGameStarted={isGameStarted}
 					isGameRunning={!isGamePaused}
 					increaseScore={increaseScore}

@@ -1,4 +1,8 @@
-import { BallContext, PaddleContext } from '@/contexts/GameContext'
+import {
+	BallColorContext,
+	BallContext,
+	PaddleContext,
+} from '@/contexts/GameContext'
 import IBall from '@/interfaces/IBall'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { Rect } from 'react-konva'
@@ -15,6 +19,7 @@ export default function Ball({
 	isAiOn,
 	ai,
 }: IBall) {
+	const ballColorContext = useContext(BallColorContext)
 	const ballContext = useContext(BallContext)
 	const paddleContext = useContext(PaddleContext)
 	const [x, setX] = useState<number>(0)
@@ -182,7 +187,7 @@ export default function Ball({
 			y={y}
 			width={ballContext.size}
 			height={ballContext.size}
-			fill={ballContext.color}
+			fill={ballColorContext}
 		/>
 	)
 }

@@ -7,4 +7,5 @@ export default interface IPaddle {
 	isRightPaddle: boolean
 	isGameRunning: boolean
 	isAiOn: boolean
+	isQuatro?: boolean
 }

@@ -63,6 +63,9 @@ export default function TournamentPage() {
 			setCurrentMatch([winners[0].id, winners[1].id])
 		} else {
 			setWinner(winnerId)
+			setIsGameRunning(false)
+			setIsTournamentStarted(false)
+			setIsSubmitted(false)
 		}
 	}
 
@@ -71,9 +74,7 @@ export default function TournamentPage() {
 			const winnerName: string = players.filter(
 				(player) => player.id === winner,
 			)[0].name
-			alert(
-				`${winnerName} wins! Congratulations! Refresh the page to start a new tournament.`,
-			)
+			alert(`${winnerName} wins! Congratulations!`)
 		}
 	}, [winner, players])
 
