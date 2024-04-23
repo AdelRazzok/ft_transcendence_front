@@ -19,7 +19,7 @@ export default function Paddle({
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (!isGameRunning) return
+			if (!isGameRunning || isAiOn) return
 			const upKey = isRightPaddle ? 'ArrowUp' : 'w'
 			const downKey = isRightPaddle ? 'ArrowDown' : 's'
 
@@ -31,6 +31,7 @@ export default function Paddle({
 		}
 
 		const handleKeyUp = (e: KeyboardEvent) => {
+			if (!isGameRunning || isAiOn) return
 			if (isRightPaddle) {
 				if (e.key === 'ArrowUp' && isMovingUp) setIsMovingUp(false)
 				else if (e.key === 'ArrowDown' && isMovingDown) setIsMovingDown(false)
@@ -47,7 +48,7 @@ export default function Paddle({
 			window.removeEventListener('keydown', handleKeyDown)
 			window.removeEventListener('keyup', handleKeyUp)
 		}
-	}, [isMovingUp, isMovingDown, isGameRunning, isRightPaddle])
+	}, [isMovingUp, isMovingDown, isGameRunning, isRightPaddle, isAiOn])
 
 	useEffect(() => {
 		const loop = () => {

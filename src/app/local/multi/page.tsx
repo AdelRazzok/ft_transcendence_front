@@ -104,7 +104,8 @@ export default function Multi() {
 	if (!isGameStarted || isGameEnded) {
 		return (
 			<div className={`${styles.pause_screen}`}>
-				<h2 onClick={startGame}>Start Game</h2>
+				<h1>MULTI</h1>
+				<h2 onClick={startGame}>START GAME</h2>
 			</div>
 		)
 	}
@@ -112,10 +113,8 @@ export default function Multi() {
 	if (isGamePaused) {
 		return (
 			<div className={`${styles.pause_screen}`}>
-				<h2 onClick={togglePause}>Resume Game</h2>
-				<p>
-					<small>Or press space</small>
-				</p>
+				<h2 onClick={togglePause}>RESUME GAME</h2>
+				<p>Or press space</p>
 			</div>
 		)
 	}
@@ -167,6 +166,7 @@ export default function Multi() {
 					increaseScore={increaseScore}
 					handleGameEnd={handleGameEnd}
 					isAiOn={false}
+					ai={() => 1}
 				/>
 			</Court>
 		</>

@@ -12,6 +12,8 @@ export default function Ball({
 	isGameStarted,
 	increaseScore,
 	handleGameEnd,
+	isAiOn,
+	ai,
 }: IBall) {
 	const ballContext = useContext(BallContext)
 	const paddleContext = useContext(PaddleContext)
@@ -57,8 +59,20 @@ export default function Ball({
 			setX((prev) => prev + xSpeed)
 			setY((prev) => prev + ySpeed)
 		}
-		// handle IA
-	}, [x, y, isStopped, isGameRunning, isGameStarted, xSpeed, ySpeed])
+		if (isAiOn) {
+			ai({ x, y, ySpeed })
+		}
+	}, [
+		x,
+		y,
+		isStopped,
+		xSpeed,
+		ySpeed,
+		isGameRunning,
+		isGameStarted,
+		isAiOn,
+		ai,
+	])
 
 	const handleScore = useCallback(() => {
 		if (x >= windowWidth) {

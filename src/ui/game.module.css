@@ -1,6 +1,7 @@
 .pause_screen {
 	height: 100vh;
 	display: flex;
+	gap: 2em;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -9,6 +10,7 @@
 
 .pause_screen h2:hover {
 	cursor: pointer;
+	text-decoration: underline;
 }
 
 .score_container {
@@ -19,7 +21,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 10em;
-	font-size: 2em;
+	font-size: 48px;
 }
 
 .game_container {

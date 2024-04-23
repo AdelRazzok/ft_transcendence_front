@@ -8,4 +8,5 @@ export default interface IBall {
 	increaseScore: (playerId: number) => void
 	handleGameEnd: (playerId: number) => void
 	isAiOn: boolean
+	ai: (ball: any) => void
 }
