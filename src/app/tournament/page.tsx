@@ -7,8 +7,10 @@ import IPlayer from '@/interfaces/IPlayer'
 import homeStyles from '@/ui/home.module.css'
 import menuStyles from '@/ui/menu.module.css'
 import { FormEvent, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function TournamentPage() {
+	const { t } = useTranslation()
 	const [players, setPlayers] = useState<IPlayer[]>([
 		{ id: 1, name: 'Player 1', winner: false },
 		{ id: 2, name: 'Player 2', winner: false },
@@ -82,18 +84,18 @@ export default function TournamentPage() {
 			<>
 				<div className={`${homeStyles.gif_background}`}></div>
 				<h1 className={`${menuStyles.menu_title} pt-5 text-center`}>
-					TOURNAMENT
+					{t('TOURNAMENT')}
 				</h1>
 
 				<form
 					onSubmit={onSubmit}
 					className="d-flex my-5 gap-5 flex-column justify-content-center align-items-center"
 				>
-					<Input type="text" name="player1" placeholder="Player 1" />
-					<Input type="text" name="player2" placeholder="Player 2" />
-					<Input type="text" name="player3" placeholder="Player 3" />
-					<Input type="text" name="player4" placeholder="Player 4" />
-					<Button text="Start"></Button>
+					<Input type="text" name="player1" placeholder="1" />
+					<Input type="text" name="player2" placeholder="2" />
+					<Input type="text" name="player3" placeholder="3" />
+					<Input type="text" name="player4" placeholder="4" />
+					<Button text={t('START')}></Button>
 				</form>
 			</>
 		)
