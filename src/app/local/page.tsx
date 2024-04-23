@@ -32,8 +32,9 @@ export default function MainMenu() {
 
 
 			<div className="mt-5 gap-5 pt-5 container d-flex flex-column justify-content-center align-items-center">
-                <Link href={`/local?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('1_PLAYER')}</Link>
-                <Link href={`/credits?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('2_PLAYERS')}</Link>
+                <Link href={`/local/solo?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('1_PLAYER')}</Link>
+                <Link href={`/local/multi?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('2_PLAYERS')}</Link>
+                <Link href={`/local/4PLAYERS?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('4_PLAYERS')}</Link>
             </div>
 		</>
 	)
