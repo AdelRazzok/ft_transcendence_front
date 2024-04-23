@@ -11,5 +11,12 @@
     "FDP": "LOS HERMANOS DEL PURGATORIO",
     "1_PLAYER": "1 JUGADOR",
     "2_PLAYERS": "2 JUGADORES",
-    "4_PLAYERS": "4 JUGADORES"
-}
+    "4_PLAYERS": "4 JUGADORES",
+    "UP": "ARRIBA",
+    "DOWN": "ABAJO",
+    "COMMANDES": "COMANDOS",
+    "MOUV": "MOVER",
+    "START": "INICIAR",
+    "PLAYER1_4": "JUGADOR 1  = w (ARRIBA) / s (ABAJO)",
+    "PLAYER2_4": "JUGADOR 2  =  arriba flecha (arriba) / abajo flecha (abajo)"
+  }

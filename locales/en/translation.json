@@ -12,5 +12,14 @@
     "FDP":"The purgatory's brothers",
     "1_PLAYER": "1 PLAYER",
     "2_PLAYERS": "2 PLAYERS",
-    "4_PLAYERS": "4 PLAYERS"
+    "4_PLAYERS": "4 PLAYERS",
+    "UP": "UP",
+    "DOWN": "DOWN",
+    "COMMANDES": "COMMANDES",
+    "MOUV": "MOUV",
+    "START": "START",
+    "PLAYER1_4": "PLAYER 1  = w (up) / s (down)",
+    "PLAYER2_4": "PLAYER 2  =  up arrow (up) / down arrow (down)",
+    "PLAYER3_4": "PLAYER 3  = d (up) / c (down)",
+    "PLAYER4_4": "PLAYER 4  =  o arrow (up) / l arrow (down)"
   }

@@ -11,5 +11,10 @@
     "FDP": "Les freres du purgatoire",
     "1_PLAYER": "1 JOUEUR",
     "2_PLAYERS": "2 JOUEURS",
-    "4_PLAYERS": "4 JOUEURS"
+    "4_PLAYERS": "4 JOUEURS",
+    "UP": "HAUT",
+    "DOWN": "BAS",
+    "COMMANDES": "COMMANDES",
+    "MOUV": "MOUV",
+    "START": "COMMENCER"
   }
