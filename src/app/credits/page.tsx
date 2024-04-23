@@ -28,18 +28,15 @@ export default function MainMenu() {
     return (
         <>
             <div className={`${homeStyles.gif_background}`}></div>
-            <h1 className={`${menuStyles.menu_title} pt-5 text-center`}>{t('PONG')}</h1>
+            <h1 className={`${menuStyles.menu_title} pt-5 text-center`}>{t('CREDITS')}</h1>
+            <h2 className={`${menuStyles.menu_link} pt-5 text-center`}>{t('FDP')}</h2>
 
-            <div className="mt-5 gap-5 pt-5 container d-flex flex-column justify-content-center align-items-center">
-                <Link href={`/local?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('LOCAL')}</Link>
-                <Link href={`/tournaments?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('TOURNAMENT')}</Link>
-                <Link href={`/languages?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('LANGUAGES')}</Link>
-                <Link href={`/credits?lang=${lang}`} className={`${menuStyles.menu_link}`}>{t('CREDITS')}</Link>
+            <div className="mt-5 gap-10 container d-flex flex-column justify-content-center align-items-center">
+                <div className={`${menuStyles.menu_link} mt-3`}>Adel RAZZOK</div>
+                <div className={`${menuStyles.menu_link} mt-3`}>Anthony RODRIGUEZ</div>
+                <div className={`${menuStyles.menu_link} mt-3`}>Clara HUGOT</div>
+                <div className={`${menuStyles.menu_link} mt-3`}>Jordann LECOMTE</div>
             </div>
         </>
-    );
+    )
 }
-
-
-
-

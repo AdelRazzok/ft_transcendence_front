@@ -183,7 +183,7 @@ export default function Multi() {
 					y={rightPaddleY}
 					update={updateRightPaddle}
 					isGameRunning={!isGamePaused}
-					isRightPaddle2={true}
+					isRightPaddle={true}
 					isAiOn={false}
 				/>
 
