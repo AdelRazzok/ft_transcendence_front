@@ -17,7 +17,7 @@ export default function MainMenu() {
 					ONLINE
 				</Link>
 
-				<Link href="" className={`${menuStyles.menu_link}`}>
+				<Link href="/tournament" className={`${menuStyles.menu_link}`}>
 					TOURNAMENT
 				</Link>
 
