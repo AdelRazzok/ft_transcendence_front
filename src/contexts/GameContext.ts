@@ -4,7 +4,7 @@ export const PaddleContext = createContext({
 	x: 10,
 	width: 10,
 	height: 150,
-	speed: 20,
+	speed: 11,
 	color: '#fff',
 })
 

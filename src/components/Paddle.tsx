@@ -11,6 +11,7 @@ export default function Paddle({
 	update,
 	isGameRunning,
 	isRightPaddle,
+	
 	isAiOn,
 }: IPaddle) {
 	const paddleContext = useContext(PaddleContext)
