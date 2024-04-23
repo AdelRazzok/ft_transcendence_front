@@ -6,6 +6,6 @@ export default interface IBall {
 	isGameStarted: boolean
 	isGameRunning: boolean
 	increaseScore: (playerId: number) => void
-	handleGameEnd: () => void
+	handleGameEnd: (playerId: number) => void
 	isAiOn: boolean
 }

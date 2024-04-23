@@ -63,14 +63,14 @@ export default function Ball({
 	const handleScore = useCallback(() => {
 		if (x >= windowWidth) {
 			increaseScore(1)
-			handleGameEnd()
+			handleGameEnd(1)
 			stopGame(-1)
-		} else if (x < -ballContext.size) {
+		} else if (x <= 0) {
 			increaseScore(2)
-			handleGameEnd()
+			handleGameEnd(2)
 			stopGame(1)
 		}
-	}, [x, windowWidth, ballContext.size, increaseScore, handleGameEnd, stopGame])
+	}, [x, windowWidth, increaseScore, handleGameEnd, stopGame])
 
 	const handlePaddleCollision = useCallback(() => {
 		if (

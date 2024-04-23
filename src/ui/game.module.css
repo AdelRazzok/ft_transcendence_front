@@ -1,0 +1,27 @@
+.pause_screen {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
+}
+
+.pause_screen h2:hover {
+	cursor: pointer;
+}
+
+.score_container {
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	transform: translateY(-5%) translateX(-50%);
+	display: flex;
+	justify-content: center;
+	gap: 10em;
+	font-size: 2em;
+}
+
+.game_container {
+	background-color: #000;
+}
