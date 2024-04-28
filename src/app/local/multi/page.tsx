@@ -20,7 +20,6 @@ export default function Multi() {
 	const [leftPlayerScore, setLeftPlayerScore] = useState<number>(0)
 	const [rightPlayerScore, setRightPlayerScore] = useState<number>(0)
 
-	// Game functions
 	const startGame = () => {
 		setIsGameEnded(false)
 		setIsGameStarted(true)

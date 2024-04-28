@@ -29,21 +29,21 @@ export default function QuatroPaddle({
 					setIsMovingDown(true)
 				}
 			} else if (isBottomLeftPaddle) {
-				if (e.key === 'i') {
+				if (e.key === 't') {
 					setIsMovingUp(true)
-				} else if (e.key === 'k') {
+				} else if (e.key === 'g') {
 					setIsMovingDown(true)
 				}
 			} else if (isTopRightPaddle) {
+				if (e.key === 'o') {
+					setIsMovingUp(true)
+				} else if (e.key === 'l') {
+					setIsMovingDown(true)
+				}
+			} else if (isBottomRightPaddle) {
 				if (e.key === 'ArrowUp') {
 					setIsMovingUp(true)
 				} else if (e.key === 'ArrowDown') {
-					setIsMovingDown(true)
-				}
-			} else if (isBottomLeftPaddle) {
-				if (e.key === '8') {
-					setIsMovingUp(true)
-				} else if (e.key === '5') {
 					setIsMovingDown(true)
 				}
 			}
@@ -51,18 +51,31 @@ export default function QuatroPaddle({
 
 		const handleKeyUp = (e: KeyboardEvent) => {
 			if (!isGameRunning || isAiOn) return
-			if (isTopRightPaddle) {
-				if (e.key === 'ArrowUp' && isMovingUp) setIsMovingUp(false)
-				else if (e.key === 'ArrowDown' && isMovingDown) setIsMovingDown(false)
-			} else if (isTopLeftPaddle) {
-				if (e.key === 'w' && isMovingUp) setIsMovingUp(false)
-				else if (e.key === 's' && isMovingDown) setIsMovingDown(false)
-			} else if (isBottomRightPaddle) {
-				if (e.key === 'i' && isMovingUp) setIsMovingUp(false)
-				else if (e.key === 'k' && isMovingDown) setIsMovingDown(false)
+
+			if (isTopLeftPaddle) {
+				if (e.key === 'w' && isMovingUp) {
+					setIsMovingUp(false)
+				} else if (e.key === 's' && isMovingDown) {
+					setIsMovingDown(false)
+				}
 			} else if (isBottomLeftPaddle) {
-				if (e.key === '8' && isMovingUp) setIsMovingUp(false)
-				else if (e.key === '5' && isMovingDown) setIsMovingDown(false)
+				if (e.key === 't' && isMovingUp) {
+					setIsMovingUp(false)
+				} else if (e.key === 'g' && isMovingDown) {
+					setIsMovingDown(false)
+				}
+			} else if (isTopRightPaddle) {
+				if (e.key === 'o' && isMovingUp) {
+					setIsMovingUp(false)
+				} else if (e.key === 'l' && isMovingDown) {
+					setIsMovingDown(false)
+				}
+			} else if (isBottomRightPaddle) {
+				if (e.key === 'ArrowUp' && isMovingUp) {
+					setIsMovingUp(false)
+				} else if (e.key === 'ArrowDown' && isMovingDown) {
+					setIsMovingDown(false)
+				}
 			}
 		}
 

@@ -1,5 +1,5 @@
 {
-	"LOCAL": "LOCALE",
+	"LOCAL": "LOCAL",
 	"ENGLISH": "ANGLAIS",
 	"FRENCH": "FRANCAIS",
 	"SPANISH": "ESPAGNOL",
@@ -7,15 +7,15 @@
 	"MENU": "MENU",
 	"TOURNAMENT": "TOURNOIS",
 	"SETTINGS": "PARAMETRES",
-	"LANGUAGES": "LANGAGES",
+	"LANGUAGES": "LANGUES",
 	"CREDITS": "CREDITS",
-	"FDP": "Les freres du purgatoire",
+	"FDP": "Développé par les Frères du Purgatoire",
 	"1 PLAYER": "1 JOUEUR",
 	"2 PLAYERS": "2 JOUEURS",
 	"4 PLAYERS": "4 JOUEURS",
 	"UP": "HAUT",
 	"DOWN": "BAS",
 	"COMMANDES": "COMMANDES",
-	"MOUV": "MOUV",
+	"MOVE": "DEPLACEMENT",
 	"START": "COMMENCER"
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import Ball from '@/components/Ball'
+import QuatroBall from '@/components/QuatroBall'
 import Court from '@/components/Court'
 import QuatroPaddle from '@/components/QuatroPaddle'
 import { PaddleContext } from '@/contexts/GameContext'
@@ -22,16 +22,15 @@ export default function Quatro() {
 	const [leftTeamScore, setLeftTeamScore] = useState<number>(0)
 	const [rightTeamScore, setRightTeamScore] = useState<number>(0)
 
-	// Game functions
 	const startGame = () => {
 		setIsGameEnded(false)
 		setIsGameStarted(true)
 
-		setTopLeftPaddleY(windowHeight - paddleContext.height)
-		setBottomLeftPaddleY(windowHeight / 4 - paddleContext.height / 4)
+		setTopLeftPaddleY(paddleContext.height)
+		setBottomLeftPaddleY(windowHeight - 2 * paddleContext.height)
 
-		setTopRightPaddleY(windowHeight - paddleContext.height)
-		setBottomRightPaddleY(windowHeight / 4 - paddleContext.height / 4)
+		setTopRightPaddleY(paddleContext.height)
+		setBottomRightPaddleY(windowHeight - 2 * paddleContext.height)
 
 		setLeftTeamScore(0)
 		setRightTeamScore(0)
@@ -68,15 +67,10 @@ export default function Quatro() {
 	const endGame = (winnerId: number) => {
 		setIsGameEnded(true)
 		setIsGameStarted(false)
-
-		setTopLeftPaddleY(windowHeight - paddleContext.height)
-		setBottomLeftPaddleY(windowHeight / 4 - paddleContext.height / 4)
-
-		setTopRightPaddleY(windowHeight - paddleContext.height)
-		setBottomRightPaddleY(windowHeight / 4 - paddleContext.height / 4)
-
+		setIsGamePaused(false)
 		setLeftTeamScore(0)
 		setRightTeamScore(0)
+
 		if (winnerId === 1) {
 			alert('Team 1 wins!')
 		} else if (winnerId === 2) {
@@ -200,11 +194,13 @@ export default function Quatro() {
 					isQuatro={true}
 				/>
 
-				<Ball
+				<QuatroBall
 					windowHeight={windowHeight}
 					windowWidth={windowWidth}
-					leftPaddleY={topLeftPaddleY}
-					rightPaddleY={topRightPaddleY}
+					topLeftPaddleY={topLeftPaddleY}
+					bottomLeftPaddleY={bottomLeftPaddleY}
+					topRightPaddleY={topRightPaddleY}
+					bottomRightPaddleY={bottomRightPaddleY}
 					isGameStarted={isGameStarted}
 					isGameRunning={!isGamePaused}
 					increaseScore={increaseScore}

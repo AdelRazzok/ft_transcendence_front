@@ -13,7 +13,7 @@ export default function MainMenu() {
 	const [isClient, setIsClient] = useState(false)
 
 	useEffect(() => {
-		setIsClient(true) // Définir que le composant est monté
+		setIsClient(true)
 	}, [])
 
 	useEffect(() => {

@@ -3,10 +3,27 @@
 import homeStyles from '@/ui/home.module.css'
 import menuStyles from '@/ui/menu.module.css'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import i18n from '@/../i18n'
 
 export default function Local() {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
+	const [lang, setLang] = useState('en')
+	const [isClient, setIsClient] = useState(false)
+
+	useEffect(() => {
+		setIsClient(true)
+	}, [])
+
+	useEffect(() => {
+		if (isClient) {
+			const params = new URLSearchParams(window.location.search)
+			const newLang = params.get('lang') || 'en'
+			setLang(newLang)
+			i18n.changeLanguage(newLang)
+		}
+	}, [isClient])
 
 	return (
 		<>

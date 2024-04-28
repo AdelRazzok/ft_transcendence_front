@@ -30,7 +30,7 @@ export default function MainMenu() {
 			<div className={`${homeStyles.gif_background}`}></div>
 			<h1 className={`${menuStyles.menu_title} pt-5 text-center`}>PONG</h1>
 
-			<div className="mt-5 gap-5 pt-5 container d-flex flex-column justify-content-center align-items-center">
+			<div className="mt-3 gap-5 pt-5 container d-flex flex-column justify-content-center align-items-center">
 				<Link
 					href={`/local?lang=${lang}`}
 					className={`${menuStyles.menu_link}`}

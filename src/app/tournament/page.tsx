@@ -8,9 +8,12 @@ import homeStyles from '@/ui/home.module.css'
 import menuStyles from '@/ui/menu.module.css'
 import { FormEvent, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import i18n from '@/../i18n'
 
 export default function TournamentPage() {
 	const { t } = useTranslation()
+	const [lang, setLang] = useState('en')
+	const [isClient, setIsClient] = useState(false)
 	const [players, setPlayers] = useState<IPlayer[]>([
 		{ id: 1, name: 'Player 1', winner: false },
 		{ id: 2, name: 'Player 2', winner: false },
@@ -59,7 +62,6 @@ export default function TournamentPage() {
 			setCurrentMatch([3, 4])
 		} else if (currentMatch.includes(3) && currentMatch.includes(4)) {
 			const winners = updatePlayers.filter((player) => player.winner)
-			console.log('winners: ', winners)
 			setCurrentMatch([winners[0].id, winners[1].id])
 		} else {
 			setWinner(winnerId)
@@ -70,6 +72,19 @@ export default function TournamentPage() {
 	}
 
 	useEffect(() => {
+		setIsClient(true)
+	}, [])
+
+	useEffect(() => {
+		if (isClient) {
+			const params = new URLSearchParams(window.location.search)
+			const newLang = params.get('lang') || 'en'
+			setLang(newLang)
+			i18n.changeLanguage(newLang)
+		}
+	}, [isClient])
+
+	useEffect(() => {
 		if (winner) {
 			const winnerName: string = players.filter(
 				(player) => player.id === winner,
@@ -77,8 +92,6 @@ export default function TournamentPage() {
 			alert(`${winnerName} wins! Congratulations!`)
 		}
 	}, [winner, players])
-
-	console.log(players)
 
 	if (!isSubmitted) {
 		return (
