@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import homeStyles from '@/ui/home.module.css'
 import menuStyles from '@/ui/menu.module.css'
 import Link from 'next/link'
@@ -8,7 +8,15 @@ import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'next/navigation'
 import i18n from '@/../i18n'
 
-export default function Local() {
+export default function LanguagesWrapper() {
+	return (
+		<Suspense fallback={<div>Loading translations...</div>}>
+			<Languages />
+		</Suspense>
+	)
+}
+
+function Languages() {
 	const searchParams = useSearchParams()
 	const lng = searchParams.get('lang') || 'en'
 	const { t } = useTranslation()
