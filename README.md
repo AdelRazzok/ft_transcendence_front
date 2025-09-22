@@ -7,8 +7,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![React Konva](https://img.shields.io/badge/React_Konva-18.2.10-orange?style=for-the-badge)](https://konvajs.org/)
 
----
-
 ## 🎮 **About The Project**
 
 FT_Transcendence is a modern, browser-based reimagining of the classic Pong game. This frontend application delivers an engaging gaming experience with multiple game modes, AI opponents, tournament systems, and multilingual support. Built as the capstone project of the 42 School curriculum, it showcases advanced web development skills and real-time game mechanics.
@@ -47,8 +45,6 @@ FT_Transcendence is a modern, browser-based reimagining of the classic Pong game
   - Smooth ball and paddle physics
   - Responsive controls
 
----
-
 ## 🛠 **Technology Stack**
 
 ### **Core Technologies**
@@ -74,8 +70,6 @@ FT_Transcendence is a modern, browser-based reimagining of the classic Pong game
 - **ESLint** - Code linting and formatting
 - **Prettier** - Code formatting
 - **Git** - Version control
-
----
 
 ## 🚀 **Getting Started**
 
@@ -125,8 +119,6 @@ npm run build
 npm start
 ```
 
----
-
 ## 🎮 **Game Modes & Controls**
 
 ### **Single Player Mode**
@@ -158,8 +150,6 @@ npm start
 - **Objective**: Competitive bracket-style tournaments
 - **Features**: Player registration, bracket visualization, winner tracking
 
----
-
 ## 🎨 **Design & Styling**
 
 ### **Visual Theme**
@@ -180,8 +170,6 @@ npm start
 - **60 FPS Rendering**: Smooth gameplay experience
 - **Particle Effects**: Visual feedback for collisions and scoring
 - **Dynamic Backgrounds**: Animated GIF backgrounds for immersion
-
----
 
 ## 🌍 **Internationalization (i18n)**
 
@@ -219,8 +207,6 @@ import { useTranslation } from 'react-i18next'
 const { t } = useTranslation()
 return <h1>{t('WELCOME')}</h1>
 ```
-
----
 
 ## 🎯 **Game Logic & Physics**
 
@@ -260,8 +246,6 @@ useEffect(() => {
 }, [dependencies])
 ```
 
----
-
 ## 🚀 **Performance Optimizations**
 
 ### **React Optimizations**
@@ -282,8 +266,6 @@ useEffect(() => {
 - **Tree Shaking**: Unused code elimination
 - **Asset Optimization**: Optimized images and fonts
 
----
-
 ## 🏆 **42 School Project Requirements**
 
 This project fulfills the requirements of the ft_transcendence project at 42 School:
@@ -294,8 +276,6 @@ This project fulfills the requirements of the ft_transcendence project at 42 Sch
 - ✅ **Game Features**: Single/multiplayer modes, tournaments, AI opponents
 - ✅ **Security**: Input validation and secure coding practices
 - ✅ **Performance**: Optimized for speed and user experience
-
----
 
 ## 🤝 **Contributing**
 
@@ -314,13 +294,9 @@ Contributions are welcome! Please follow these steps:
 - Write meaningful commit messages
 - Test thoroughly before submitting PRs
 
----
-
 ## 📝 **License**
 
 This project is part of the 42 School curriculum and is intended for educational purposes.
-
----
 
 ## 👥 **Credits**
 
@@ -333,7 +309,5 @@ A collaborative effort showcasing the culmination of skills learned throughout t
 - **42 School** for the comprehensive curriculum
 - **The React Community** for excellent documentation and tools
 - **Konva.js Team** for the powerful 2D canvas library
-
----
 
 **Ready to experience the future of Pong? Clone the repo and start playing! 🎮**
